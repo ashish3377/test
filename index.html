@@ -1,0 +1,238 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/32423231.css" type="text/css">
+<link rel="stylesheet" href="css/89098089.css" type="text/css">
+<script type="text/javascript" src="js/jade.js"></script>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="robots" content="noindex" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+<style>
+form#mg_calc_btc .i-b {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #e7e7e7;
+	padding-left: 5px;
+}
+form#mg_calc_btc select {
+	height: 20px;
+	margin-top: 1px;
+	width: 175px;
+	font: 12px;
+}
+.mini-frame {
+	padding: 13px 15px;
+	background-color: #f8f8f8;
+	border:1px solid #e7e7e7;
+	font-family: 'Open Sans', sans-serif;
+}
+.txt-bold {
+	font-size: 13px;
+	font-weight:800;
+	color: #424242;
+}
+.bd-t {
+	border-top:1px solid #e7e7e7;
+}
+form#mg_calc_btc .mini-frame td {
+	height: 42px;
+}
+form#mg_calc_btc td.info {
+	width: 145px;
+	padding-left: 0px;
+	padding-right: 30px;
+}
+form#mg_calc_btc td.submit {
+	height: 16px;
+	padding-top: 15px;
+	padding-bottom: 24px;
+}
+form#mg_calc_btc div.container {
+	margin: 0 auto;
+	width: 92px;
+}
+form#mg_calc_btc .calcbtn {
+	background-color:#025B7A;
+	padding: 4px 6px;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 13px;
+}
+form#mg_calc_btc .calcbtn:hover {
+	background-color:#025b7ad9;
+	padding: 4px 6px;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 13px;
+}
+</style>
+</head>
+<body>
+<div class="inlineblock">
+  <table border="0" cellspacing="0" cellpadding="0" style="margin:0 auto;">
+    <tr>
+      <td><form onsubmit="return false;" id="mg_calc_btc" name="mg_calc_btc">
+          <div class="template_mini_frame_gray template_mini_frame_gray_narrow">
+          <div id="background_color_div" class="template_mini_frame_gray_text">
+            <div class="mini-frame">
+              <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                  <td class="txt-bold info">Account Currency :</td>
+                  <td class=""><select name="acc_curr" id="acc_curr" class="newInput selectBox" onchange="update_current_price()">
+                      <option value="12">USD</option>
+                      <option value="17">EUR</option>
+                      <option value="4">CHF</option>
+                      <option value="2">JPY</option>
+                      <option value="15">CAD</option>
+                      <option value="3">GBP</option>
+                      <option value="1">AUD</option>
+                      <option value="5">NZD</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="txt-bold info">Currency Pair :</td>
+                  <td class=""><select name="curr_pair" id="curr_pair" onchange="update_current_price();" class="newInput selectBox">
+                      <option value="1" base="AUD">AUD/CAD</option>
+                      <option value="1" base="AUD">AUD/CHF</option>
+                      <option value="1" base="AUD">AUD/JPY</option>
+                      <option value="1" base="AUD">AUD/NZD</option>
+                      <option value="1" base="AUD">AUD/USD</option>
+                      <option value="15" base="CAD">CAD/JPY</option>
+                      <option value="4" base="CHF">CHF/JPY</option>
+                      <option value="17" base="EUR">EUR/AUD</option>
+                      <option value="17" base="EUR">EUR/CAD</option>
+                      <option value="17" base="EUR">EUR/CHF</option>
+                      <option value="17" base="EUR">EUR/GBP</option>
+                      <option value="17" base="EUR">EUR/JPY</option>
+                      <option value="17" base="EUR">EUR/NZD</option>
+                      <option value="17" base="EUR" selected="selected">EUR/USD</option>
+                      <option value="3" base="GBP">GBP/AUD</option>
+                      <option value="3" base="GBP">GBP/CAD</option>
+                      <option value="3" base="GBP">GBP/CHF</option>
+                      <option value="3" base="GBP">GBP/JPY</option>
+                      <option value="3" base="GBP">GBP/NZD</option>
+                      <option value="3" base="GBP">GBP/USD</option>
+                      <option value="5" base="NZD">NZD/JPY</option>
+                      <option value="5" base="NZD">NZD/USD</option>
+                      <option value="12" base="USD">USD/CAD</option>
+                      <option value="12" base="USD">USD/CHF</option>
+                      <option value="12" base="USD">USD/DKK</option>
+                      <option value="12" base="USD">USD/HKD</option>
+                      <option value="12" base="USD">USD/JPY</option>
+                      <option value="12" base="USD">USD/SGD</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="txt-bold info">Conversion Price (<span id="baseCur">EUR</span>/<span id="quoteCur">USD</span>) :</td>
+                  <td class=""><input type="text" id="current" class="i-b" /></td>
+                </tr>
+                <tr>
+                  <td class="txt-bold info">Margin Ratio :</td>
+                  <td class=""><select name="margin" id="margin" class="i-b">
+                      <option value="1">1:1</option>
+                      <option value="5">5:1</option>
+                      <option value="10">10:1</option>
+                      <option value="20">20:1</option>
+                      <option selected="true" value="25">25:1</option>
+                      <option value="30">30:1</option>
+                      <option value="40">40:1</option>
+                      <option value="50">50:1</option>
+                      <option value="100">100:1</option>
+                      <option value="200">200:1</option>
+                      <option value="300">300:1</option>
+                      <option value="400">400:1</option>
+                    </select></td>
+                </tr>
+                <tr>
+                  <td class="txt-bold info">Trade size :</td>
+                  <td class=""><input type="text" name="tradeSize" value="1000" id="tradeSize" class="i-b" /></td>
+                </tr>
+                <tr>
+                  <td class="submit" colspan="3"><div class="container">
+                      <div class="calc"> <a onclick="" href="javascript:void(0);" class="" style="text-decoration: none;"> <span  class="newBtnLeft">&nbsp;</span><span  class="calcbtn">Calculate</span><span  class="newBtn newBtnRight rightNewBtnGreen">&nbsp;</span> </a> </div>
+                    </div></td>
+                </tr>
+                <tr>
+                  <td class="total info txt-bold bd-t">Margin Used (<span id="msgbox" class=" arial_18">USD</span>):</td>
+                  <td class="bd-t sum"><span id="msgboxtotal"></span>
+                    <div id="loader" class="float_lang_base_1 hide"><img src="loading.svg"></div></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </form></td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    function update_current_price()
+    {
+
+        var account_currency_id = $('#acc_curr :selected').val();
+        var account_currency_name = $('#acc_curr :selected').text();
+
+        var currency_pair_id = $('#curr_pair :selected').val();
+        var currency_pair_base = $('#curr_pair :selected').attr('base');
+
+        $.get('https://in.investing.com/tools/Service/margin', {
+
+            'acc_curr' : account_currency_id,
+            'curr_pair' : currency_pair_id
+
+        }, function(data) {
+            if (data.length > 0) {
+                $('#baseCur').text(currency_pair_base);
+                $('#quoteCur').text(account_currency_name);
+                $('#msgbox').text(account_currency_name);
+                $('#msgboxtotal').text('');
+
+                $('#current').val(data) ;
+            }
+        });
+
+    }
+
+    function check_fields_margin_calc()
+    {
+        $('#msgboxtotal').html('');
+        if(validateNumeric("#calc_form input[name='tradeSize'],#calc_form input[name='current']"))
+        {
+            get_margin_calculations();
+        }
+    }
+
+    function get_margin_calculations()
+    {
+
+        var current =  unFormat('#current');
+        var trade_size = unFormat('#tradeSize');
+        var margin_ratio = $('#margin :selected').val();
+        var account_currency = $('#acc_curr :selected').val();
+        var curr_signs = new Array();
+        curr_signs[17] = "&#128;";
+        curr_signs[4] = "";
+        curr_signs[2] = "&#165;";
+        curr_signs[15] = "&#36;";
+        curr_signs[3] = "&#163;";
+        curr_signs[1] = "";
+        curr_signs[5] = "";
+        curr_signs[12] =  "&#36;";
+
+        $("#loader").fadeIn('fast').fadeOut(function(){
+            var result = formatNumber(toFixed((current * trade_size) / margin_ratio, 4));
+            $('#msgboxtotal').html(curr_signs[account_currency]+ result);
+        });
+
+
+    }
+
+    $(document).ready( function() {
+        $('#calc_form input').keypress(function(event) { if (event.keyCode == 13) { check_fields_margin_calc(); return false; } });
+    });
+
+</script>
